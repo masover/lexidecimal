@@ -8,7 +8,7 @@ module Lexidecimal
     string.each_char.map{|d| 9-d.to_i}.join
   end
   
-  def self.integer_to_string num, sign=nil, negative=nil
+  def self.int_to_string num, sign=nil, negative=nil
     return '0' if num == 0
     
     if sign.nil?
@@ -27,7 +27,7 @@ module Lexidecimal
     
     length = string.length
     if length > 1
-      "#{sign}#{self.integer_to_string length, sign, negative}#{string}"
+      "#{sign}#{self.int_to_string length, sign, negative}#{string}"
     else
       "#{sign}#{string}"
     end
@@ -52,7 +52,7 @@ module Lexidecimal
       antisign = MINUS
     end
     
-    "#{sign}#{self.integer_to_string(negative ? -exponent : exponent)}#{digits}#{antisign}"
+    "#{sign}#{self.int_to_string(negative ? -exponent : exponent)}#{digits}#{antisign}"
   end
   
   def self.string_to_int string
