@@ -81,4 +81,28 @@ module Lexidecimal
     end
     negative ? -length : length
   end
+  
+  def self.string_to_decimal string
+    self.enum_to_decimal string.each_char
+  end
+  
+  def self.enum_to_decimal enum
+    sign = enum.next
+    negative = (sign == MINUS)
+    antisign = (negative ? PLUS : MINUS)
+    
+    exponent = self.enum_to_int enum
+    
+    digits = ''
+    
+    while (cur = enum.next) != antisign
+      if negative
+        digits << (9 - cur.to_i).to_s
+      else
+        digits << cur
+      end
+    end
+    
+    BigDecimal.new "#{sign}0.#{digits}e#{exponent}"
+  end
 end
