@@ -92,6 +92,7 @@ module Lexidecimal
     antisign = (negative ? PLUS : MINUS)
     
     exponent = self.enum_to_int enum
+    exponent = -exponent if negative
     
     digits = ''
     
@@ -103,6 +104,6 @@ module Lexidecimal
       end
     end
     
-    BigDecimal.new "#{sign}0.#{digits}e#{exponent}"
+    BigDecimal.new "#{negative ? '-' : ''}0.#{digits}e#{exponent}"
   end
 end
