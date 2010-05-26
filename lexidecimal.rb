@@ -2,7 +2,7 @@ require 'bigdecimal'
 
 module Lexidecimal
   MINUS = '-'.freeze
-  PLUS = '+'.freeze
+  PLUS = 'p'.freeze
   
   def self.invert string
     string.each_char.map{|d| 9-d.to_i}.join
