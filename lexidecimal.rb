@@ -34,10 +34,6 @@ module Lexidecimal
   end
   
   def self.decimal_to_string num
-    unless num.kind_of? BigDecimal
-      num = BigDecimal.new(num.to_s)
-    end
-    
     sign, digits, base, exponent = num.split
     
     return '0' if digits == '0'
